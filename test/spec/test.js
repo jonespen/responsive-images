@@ -1,18 +1,19 @@
 /*global describe, it */
 'use strict';
 (function () {
-  var imageContainers = {
-    big: { 
-      image: document.getElementsByClassName('big')[0], 
-      width: document.getElementsByClassName('big')[0].clientWidth 
-    },
-    small: { 
-      image: document.getElementsByClassName('small')[0], 
-      width: document.getElementsByClassName('small')[0].clientWidth 
-    }
-  },
-    $bigImg,
-    $smallImg;
+  var pixelRatio = window.devicePixelRatio ? window.devicePixelRatio : 1,
+      imageContainers = {
+        big: { 
+          image: document.getElementsByClassName('big')[0], 
+          width: document.getElementsByClassName('big')[0].clientWidth * pixelRatio 
+        },
+        small: { 
+          image: document.getElementsByClassName('small')[0], 
+          width: document.getElementsByClassName('small')[0].clientWidth * pixelRatio
+        }
+      },
+      $bigImg,
+      $smallImg;
 
   before(function(){
     imageContainers.big.status = responsiveImages.lazyloadImage(imageContainers.big.image);
